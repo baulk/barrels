@@ -1,0 +1,40 @@
+//Microsoft Visual C++ generated resource script.
+//
+#include "windows.h"
+#include "resource.h"
+
+BERRALS_APP_ICON ICON "Barrels.ico"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION BERRALS_VERSION_MAJOR, BERRALS_VERSION_MINOR, BERRALS_VERSION_PATCH, BERRALS_VERSION_BUILD
+PRODUCTVERSION BERRALS_VERSION_MAJOR, BERRALS_VERSION_MINOR, BERRALS_VERSION_PATCH, BERRALS_VERSION_BUILD
+FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+FILEFLAGS 0x1L
+#else
+FILEFLAGS 0x0L
+#endif
+FILEOS 0x40004L
+FILETYPE 0x1L
+FILESUBTYPE 0x0L
+BEGIN
+BLOCK "StringFileInfo"
+BEGIN
+BLOCK "000904b0"
+BEGIN
+VALUE "CompanyName", L"Baulk contributors"
+VALUE "FileDescription", L"Barrels - Baulk environment dock"
+VALUE "FileVersion", BERRALS_VERSION
+VALUE "InternalName", L"Barrels.exe"
+VALUE "LegalCopyright", BERRALS_COPYRIGHT
+VALUE "OriginalFilename", L"Barrels.exe"
+VALUE "ProductName", L"Barrels - Baulk environment dock"
+VALUE "ProductVersion", BERRALS_VERSION
+END
+END
+BLOCK "VarFileInfo"
+BEGIN
+VALUE "Translation", 0x9, 1200
+END
+END
+

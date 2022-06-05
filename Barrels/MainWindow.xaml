@@ -1,0 +1,23 @@
+﻿<Window
+    x:Class="Barrels.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Barrels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid>
+        <ComboBox x:Name="baulkLocationBox" IsEditable="True"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30 ,20,0,0"  Header="Baulk Executor (baulk-exec) Location: " PlaceholderText="Type baulk-exec location here" Width="520"></ComboBox>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,48,0,0" Click="OnOpenBaulkLocation" Content="Search" Width="90"></Button>
+        <ComboBox  x:Name="vsInstanceBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,90,0,0" Header="Visual Studio: " PlaceholderText="Select Visual Studo" Width="300">
+        </ComboBox>
+        <ComboBox x:Name="archTargetBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,90,0,0" Header="Target Architecture: " PlaceholderText="Select target architecture" Width="300">
+        </ComboBox>
+        <ComboBox x:Name="envInstanceBox" IsEditable="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,170,0,0" Header="Virtual Environments: " PlaceholderText="Select venv" Width="300">
+            <x:String>rust</x:String>
+            <x:String>golang</x:String>
+        </ComboBox>
+        <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,200,0,0" x:Name="makeCleanupEnvBox" Content="Make Cleanup Environment"/>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,280,0,0" Click="OnOpenBaulkTerminal" Content="Open Baulk Terminal" Width="300"></Button>
+    </Grid>
+</Window>
