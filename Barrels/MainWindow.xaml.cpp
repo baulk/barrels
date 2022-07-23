@@ -21,7 +21,9 @@ MainWindow::MainWindow() {
   HWND hWnd{nullptr};
   windowNative->get_WindowHandle(&hWnd);
   auto hIcon = LoadIconW(GetModuleHandleW(nullptr), MAKEINTRESOURCEW(BERRALS_APP_ICON));
-  ::SendMessageW(hWnd, WM_SETICON, TRUE, (LPARAM)hIcon);
+  ::SendMessageW(hWnd, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
+  ::SendMessageW(hWnd, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
+  ::SendMessageW(hWnd, WM_SETICON, ICON_SMALL2, (LPARAM)hIcon);
   ::SetWindowTextW(hWnd, L"Barrels - Baulk environment dock");
   auto dpiX = ::GetDpiForWindow(hWnd);
   ::SetWindowPos(hWnd, nullptr, 0, 0, ::MulDiv(700, dpiX, USER_DEFAULT_SCREEN_DPI),
