@@ -10,7 +10,7 @@
 
 constexpr COMDLG_FILTERSPEC filters[] = {
     // archives
-    {L"baulk-exec (baulk-exec.exe)", L"baulk-exec.exe"},
+    {L"Baulk Executor", L"baulk-exec.exe"},
     {L"All Files (*.*)", L"*.*"}
     //
 };
@@ -27,7 +27,7 @@ std::optional<std::wstring> barrels::baulk_exec_picker(HWND hWnd) {
   if (window->SetFileTypes(2, filters) != S_OK) {
     return std::nullopt;
   }
-  if (window->SetTitle(L"Seach baulk-exec.exe") != S_OK) {
+  if (window->SetTitle(L"Seach Baulk Extended Executor") != S_OK) {
     return std::nullopt;
   }
   if (window->Show(hWnd) != S_OK) {
