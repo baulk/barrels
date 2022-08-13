@@ -45,10 +45,6 @@ MainWindow::MainWindow() {
   OnLoad();
 }
 
-int32_t MainWindow::MyProperty() { throw hresult_not_implemented(); }
-
-void MainWindow::MyProperty(int32_t /* value */) { throw hresult_not_implemented(); }
-
 } // namespace winrt::Barrels::implementation
 
 #ifdef _M_X64

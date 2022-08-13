@@ -21,9 +21,6 @@ struct MainWindow : MainWindowT<MainWindow> {
   barrels::vs_instances_t vsInstances;
   MainWindow();
 
-  int32_t MyProperty();
-  void MyProperty(int32_t value);
-
   void SetBackground() {
     if (winrt::MUCSB::MicaController::IsSupported()) {
       // We ensure that there is a Windows.System.DispatcherQueue on the current thread.
