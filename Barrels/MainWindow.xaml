@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid>
-        <ComboBox x:Name="baulkLocationBox" IsEditable="True"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30 ,20,0,0"  Header="Baulk Executor (baulk-exec) Location: " PlaceholderText="Type baulk-exec location here" Width="520"></ComboBox>
+        <ComboBox x:Name="baulkLocationBox" IsEditable="True"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0"  Header="Baulk Executor (baulk-exec) Location: " PlaceholderText="Type baulk-exec location here" Width="520"></ComboBox>
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,48,0,0" Click="OnOpenBaulkLocation" Content="Search" Width="90"></Button>
         <ComboBox  x:Name="vsInstanceBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,90,0,0" Header="Visual Studio: " PlaceholderText="Select Visual Studo" Width="300">
         </ComboBox>
