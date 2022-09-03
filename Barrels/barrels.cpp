@@ -95,7 +95,6 @@ auto search_baulk_install(HKEY hRootKey) -> std::optional<std::wstring> {
 
 bool barrels::search_vs_instances(vs_instances_t &vsInstances) {
   barrels::Searcher s;
-  barrels::vs_instances_t vss;
   return s.Initialize() && s.Search(vsInstances);
 }
 

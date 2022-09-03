@@ -49,11 +49,11 @@ struct vs_instance_t {
     if (ullMainVersion == r.ullMainVersion) {
       // MainVersion equal
       if (IsPreview == r.IsPreview) {
-        return ullVersion < r.ullVersion;
+        return ullVersion > r.ullVersion;
       }
-      return IsPreview;
+      return !IsPreview;
     }
-    return ullMainVersion < r.ullMainVersion;
+    return ullMainVersion > r.ullMainVersion;
   }
 };
 
