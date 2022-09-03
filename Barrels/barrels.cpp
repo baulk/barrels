@@ -98,6 +98,14 @@ bool barrels::search_vs_instances(vs_instances_t &vsInstances) {
   return s.Initialize() && s.Search(vsInstances);
 }
 
+inline bool path_exists(const std::wstring_view p) {
+  auto a = GetFileAttributesW(p.data());
+  if (a == INVALID_FILE_ATTRIBUTES) {
+    return false;
+  }
+  return true;
+}
+
 bool barrels::search_baulk_lists(std::vector<std::wstring> &baulks) {
   if (auto p = search_baulk_install(HKEY_CURRENT_USER); p) {
     baulks.emplace_back(std::move(*p));
@@ -105,12 +113,11 @@ bool barrels::search_baulk_lists(std::vector<std::wstring> &baulks) {
   if (auto p = search_baulk_install(HKEY_LOCAL_MACHINE); p) {
     baulks.emplace_back(std::move(*p));
   }
-  std::error_code e;
   // store app
-  if (auto p = ExpandEnv(LR"(%LOCALAPPDATA%\Microsoft\WindowsApps\baulk-exec.exe)"); std::filesystem::exists(p, e)) {
+  if (auto p = ExpandEnv(LR"(%LOCALAPPDATA%\Microsoft\WindowsApps\baulk-exec.exe)"); path_exists(p)) {
     baulks.emplace_back(std::move(p));
   }
-  if (auto p = ExpandEnv(L"%SystemDrive%\\Baulk\\bin\\baulk-exec.exe"); std::filesystem::exists(p, e)) {
+  if (auto p = ExpandEnv(L"%SystemDrive%\\Baulk\\bin\\baulk-exec.exe"); path_exists(p)) {
     baulks.emplace_back(std::move(p));
   }
   return !baulks.empty();
