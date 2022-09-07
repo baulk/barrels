@@ -34,6 +34,7 @@ struct MainWindow : MainWindowT<MainWindow> {
 
       // Setup Mica on the current Window.
       m_micaController = winrt::MUCSB::MicaController();
+      //m_micaController.Kind(MUCSB::MicaKind::BaseAlt);
       m_micaController.SetSystemBackdropConfiguration(m_configuration);
       m_micaController.AddSystemBackdropTarget(this->try_as<winrt::MUC::ICompositionSupportsSystemBackdrop>());
     }
