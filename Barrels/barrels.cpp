@@ -46,7 +46,7 @@ std::optional<std::wstring> barrels::baulk_exec_picker(HWND hWnd) {
   return opt;
 }
 
-std::wstring ExpandEnv(std::wstring_view sv) {
+inline static std::wstring ExpandEnv(std::wstring_view sv) {
   auto pos = sv.find('%');
   if (pos == std::wstring_view::npos) {
     return std::wstring(sv);
