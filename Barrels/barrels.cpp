@@ -27,7 +27,7 @@ std::optional<std::wstring> barrels::baulk_exec_picker(HWND hWnd) {
   if (window->SetFileTypes(2, filters) != S_OK) {
     return std::nullopt;
   }
-  if (window->SetTitle(L"Seach Baulk Extended Executor") != S_OK) {
+  if (window->SetTitle(L"Search Baulk executor") != S_OK) {
     return std::nullopt;
   }
   if (window->Show(hWnd) != S_OK) {
@@ -51,7 +51,7 @@ inline static std::wstring ExpandEnv(std::wstring_view sv) {
   if (pos == std::wstring_view::npos) {
     return std::wstring(sv);
   }
-  // NO check
+  // expand env
   if (sv.find(L'%', pos + 1) == std::wstring_view::npos) {
     return std::wstring(sv);
   }
@@ -65,16 +65,16 @@ inline static std::wstring ExpandEnv(std::wstring_view sv) {
   if (N == 0 || static_cast<size_t>(N) > buf.size()) {
     return L"";
   }
-  buf.resize(N - 1);
+  buf.resize(static_cast<size_t>(N) - 1);
   return buf;
 }
 
 static constexpr wchar_t RegKeyBaulk[] = L"Software\\Baulk";
 static constexpr wchar_t RegKeyInstallPath[] = L"InstallPath";
 
-auto search_baulk_install(HKEY hRootKey) -> std::optional<std::wstring> {
+inline static auto search_baulk_install(HKEY hRootKey) -> std::optional<std::wstring> {
   wil::unique_hkey bk;
-  wchar_t buffer[4096];
+  wchar_t buffer[4096] = {};
   DWORD dwSize = sizeof(buffer);
   DWORD type = 0;
   if (RegOpenKeyExW(hRootKey, RegKeyBaulk, 0, KEY_READ, &bk) != ERROR_SUCCESS) {
@@ -98,7 +98,7 @@ bool barrels::search_vs_instances(vs_instances_t &vsInstances) {
   return s.Initialize() && s.Search(vsInstances);
 }
 
-inline bool path_exists(const std::wstring_view p) {
+inline static bool path_exists(const std::wstring_view p) {
   auto a = GetFileAttributesW(p.data());
   if (a == INVALID_FILE_ATTRIBUTES) {
     return false;
@@ -123,7 +123,7 @@ bool barrels::search_baulk_lists(std::vector<std::wstring> &baulks) {
   return !baulks.empty();
 }
 
-inline std::optional<std::wstring> FindWindowsTerminal() {
+inline static std::optional<std::wstring> FindWindowsTerminal() {
   auto wt = ExpandEnv(L"%LOCALAPPDATA%\\Microsoft\\WindowsApps\\wt.exe");
   if (auto a = GetFileAttributesW(wt.data()); a == INVALID_FILE_ATTRIBUTES) {
     return std::nullopt;
@@ -150,10 +150,10 @@ bool barrels::execute(const std::wstring_view baulkExec, const std::wstring_view
     ea.Append(L"--cleanup");
   }
   ea.Append(L"winsh");
-  STARTUPINFOW si;
+  STARTUPINFOW si{};
   SecureZeroMemory(&si, sizeof(si));
   si.cb = sizeof(si);
-  PROCESS_INFORMATION pi;
+  PROCESS_INFORMATION pi{};
   SecureZeroMemory(&pi, sizeof(pi));
   if (CreateProcessW(nullptr, ea.data(), nullptr, nullptr, FALSE, CREATE_UNICODE_ENVIRONMENT, nullptr, nullptr, &si,
                      &pi) != TRUE) {

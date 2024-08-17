@@ -48,11 +48,9 @@ MainWindow::MainWindow() {
 } // namespace winrt::Barrels::implementation
 
 #ifdef _M_X64
-constexpr std::wstring_view arch_targets[] = {L"x64", L"arm64", L"x86"};
+constexpr std::wstring_view arch_targets[] = {L"x64", L"arm64"};
 #elif defined(_M_ARM64)
-constexpr std::wstring_view arch_targets[] = {L"arm64", L"x64", L"x86"};
-#else
-constexpr std::wstring_view arch_targets[] = {L"x86", L"x64", L"arm64"};
+constexpr std::wstring_view arch_targets[] = {L"arm64", L"x64"};
 #endif
 
 void winrt::Barrels::implementation::MainWindow::OnLoad() {
