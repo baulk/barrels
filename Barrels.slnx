@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <Platform Name="arm64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Barrels/Barrels.vcxproj" Id="e7996452-e029-468e-ab63-18de560e1a2c">
+    <Deploy />
+  </Project>
+</Solution>
