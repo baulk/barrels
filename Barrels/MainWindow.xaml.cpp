@@ -56,7 +56,7 @@ constexpr std::wstring_view arch_targets[] = {L"arm64", L"x64"};
 void winrt::Barrels::implementation::MainWindow::OnLoad() {
   std::vector<std::wstring> baulks;
   if (barrels::search_baulk_lists(baulks)) {
-    for (const auto b : baulks) {
+    for (const auto &b : baulks) {
       baulkLocationBox().Items().Append(winrt::box_value(b));
     }
     baulkLocationBox().SelectedIndex(0);
