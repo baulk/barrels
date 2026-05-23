@@ -3,7 +3,7 @@
 #define BERRALS_RESOURCE_H
 
 #ifndef BERRALS_VERSION_MAJOR
-#define BERRALS_VERSION_MAJOR 4
+#define BERRALS_VERSION_MAJOR 6
 #endif
 
 #ifndef BERRALS_VERSION_MINOR
@@ -19,7 +19,7 @@
 #endif
 
 #ifndef BERRALS_VERSION
-#define BERRALS_VERSION L"4.0.0"
+#define BERRALS_VERSION L"6.0.0"
 #endif
 
 #ifndef BERRALS_REVISION
@@ -54,11 +54,11 @@
 #endif
 
 #ifndef BERRALS_APPVERSION
-#define BERRALS_APPVERSION L"Version: 4.0.0\nCopyright \xA9 2022, Baulk contributors."
+#define BERRALS_APPVERSION L"Version: 6.0.0\nCopyright \xA9 2026, Baulk contributors."
 #endif
 
 #ifndef BERRALS_COPYRIGHT
-#define BERRALS_COPYRIGHT L"Copyright \xA9 2022, Baulk contributors."
+#define BERRALS_COPYRIGHT L"Copyright \xA9 2026, Baulk contributors."
 #endif
 
 #define BERRALS_APP_ICON 501
