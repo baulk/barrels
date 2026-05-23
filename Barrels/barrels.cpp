@@ -131,6 +131,8 @@ inline static std::optional<std::wstring> FindWindowsTerminal() {
   return std::make_optional(std::move(wt));
 }
 
+constexpr std::wstring_view previewSuffix = L"-preview";
+
 bool barrels::execute(const std::wstring_view baulkExec, const std::wstring_view vsInstanceId,
                       const std::wstring_view arch, const std::wstring_view venv, bool makeCleanEnv) {
   bela::EscapeArgv ea;
@@ -138,10 +140,19 @@ bool barrels::execute(const std::wstring_view baulkExec, const std::wstring_view
     ea.Assign(*wt).Append(L"--title").Append(L"Windows Terminal \U0001F496 Baulk").Append(L"--");
   }
   ea.Append(baulkExec);
+  std::wstring_view baseArch(arch);
   auto cwd = ExpandEnv(L"%USERPROFILE%");
   ea.Append(L"--cwd").Append(cwd);
+  bool vcPreview = false;
+  if (baseArch.ends_with(previewSuffix)) {
+    vcPreview = true;
+    baseArch.remove_suffix(previewSuffix.size());
+  }
   if (!vsInstanceId.empty()) {
-    ea.Append(L"--vs-instance").Append(vsInstanceId).Append(L"-A").Append(arch);
+    ea.Append(L"--vs-instance").Append(vsInstanceId).Append(L"-A").Append(baseArch);
+  }
+  if (vcPreview) {
+    ea.Append(L"--vc-preview");
   }
   if (!venv.empty()) {
     ea.Append(L"-E").Append(venv);
